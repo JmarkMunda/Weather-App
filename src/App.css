@@ -1,38 +1,108 @@
-.App {
-  text-align: center;
+.app,
+.rainy,
+.clouds,
+.drizzle,
+.thunderstorm,
+.snow,
+.clear {
+  width: 100%;
+  height: 100vh;
+  padding: 60px 150px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: 0.8s ease;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app {
+  background-image: linear-gradient(rgb(174, 174, 221), rgb(203, 203, 240));
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.rainy {
+  background-image: url("./assets/raining.jpg");
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.clouds {
+  background-image: url("./assets/clouds.jpg");
+}
+.drizzle {
+  background-image: url("./assets/Drizzle.jpg");
+}
+.thunderstorm {
+  background-image: url("./assets/thunderstorm.jpg");
+}
+.snow {
+  background-image: url("./assets/snow.jpg");
+}
+.clear {
+  background-image: url("./assets/clear.jpg");
+}
+.content {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+}
+.header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+input {
+  padding: 10px 20px;
+  border-radius: 20px;
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+::placeholder {
+  color: #fff;
+}
+.left-container {
+  display: flex;
+  width: auto;
+}
+.left-container > h1 {
+  font-size: 2.5rem;
+}
+.temperature {
+  margin-left: 25px;
+  font-size: 24px;
+}
+.weather-container {
+  margin-bottom: 20px;
+}
+.weather-container > p,
+h3 {
+  margin-bottom: 4px;
+}
+.description {
+  font-style: italic;
+  font-size: 14px;
+}
+.other-details {
+  margin-top: 40px;
+}
+.other-details p {
+  margin-bottom: 5px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media only screen and (max-width: 500px) {
+  .app,
+  .rainy,
+  .clouds,
+  .drizzle,
+  .thunderstorm,
+  .snow,
+  .clear {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 0;
   }
-  to {
-    transform: rotate(360deg);
+  .content {
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+  }
+  .right-container {
+    margin-top: 40px;
   }
 }

@@ -1,23 +1,51 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import axios from 'axios';
+import Header from './components/Header';
+import Content from './components/Content';
+
+import {raining} from './assets/raining.jpg';
 
 function App() {
+  const [data, setData] = useState({});
+  const [location, setLocation] = useState('');
+
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=bdd58312886433b5f371378b047bad2f`;
+
+  const searchLocation = (e) => {
+    if (e.key === 'Enter') {
+      axios.get(url)
+      .then((response) => {
+      setData(response.data)
+      })
+      setLocation('');
+    } 
+  }
+
+  const weatherBg = () => {
+    switch(data.weather && data.weather[0].main){
+      case 'Rain':
+        return 'rainy'
+      case 'Clouds':
+        return 'clouds'
+      case 'Drizzle':
+        return 'drizzle'
+      case 'Thunderstorm':
+        return 'thunderstorm'
+      case 'Snow':
+        return 'snow'
+      case 'Clear':
+        return 'clear'
+      default:
+        return 'app'
+    } 
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={weatherBg()}>
+      <Header searchLocation={searchLocation} location={location} setLocation={setLocation}/>
+      <Content data={data}/>
     </div>
   );
 }
